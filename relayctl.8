@@ -23,6 +23,7 @@
 .Nd control the relay daemon
 .Sh SYNOPSIS
 .Nm
+.Op Fl v
 .Op Fl s Ar socket
 .Ar command
 .Op Ar argument ...
@@ -42,6 +43,8 @@ instead of the default
 .Pa /var/run/relayd.sock
 to communicate with
 .Xr relayd 8 .
+.It Fl v
+Verbose output.
 .El
 .Pp
 The following commands are available:
@@ -78,7 +81,7 @@ the backup table as well.
 .It Cm reload
 Reload the configuration file.
 .It Cm show hosts
-Show detailed status of hosts and tables.
+Show detailed status of hosts.
 It will also print the last error for failed host checks;
 see the
 .Sx DIAGNOSTICS
