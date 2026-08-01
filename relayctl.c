@@ -546,7 +546,7 @@ print_table_status(int up, int fl)
 	else if (up)
 		state = "active";
 	else
-		state = "empty";
+		state = "unavailable";
 
 	if (up && verbose)
 		snprintf(buf, sizeof(buf), "%s%s (%d hosts)",
