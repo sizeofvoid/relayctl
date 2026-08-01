@@ -537,18 +537,23 @@ print_rdr_status(int flags)
 char *
 print_table_status(int up, int fl)
 {
-	static char buf[1024];
+	static char	 buf[1024];
+	const char	*role = (fl & F_BACKUP) ? "backup " : "";
+	const char	*state;
 
-	bzero(buf, sizeof(buf));
-
-	if (fl & F_DISABLE) {
-		snprintf(buf, sizeof(buf) - 1, "disabled");
-	} else if (!up) {
-		snprintf(buf, sizeof(buf) - 1, "empty");
-	} else if (verbose)
-		snprintf(buf, sizeof(buf) - 1, "active (%d hosts)", up);
+	if (fl & F_DISABLE)
+		state = "disabled";
+	else if (up)
+		state = "active";
 	else
-		snprintf(buf, sizeof(buf) - 1, "active");
+		state = "empty";
+
+	if (up && verbose)
+		snprintf(buf, sizeof(buf), "%s%s (%d hosts)",
+		    role, state, up);
+	else
+		snprintf(buf, sizeof(buf), "%s%s", role, state);
+
 	return (buf);
 }
 
