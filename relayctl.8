@@ -57,10 +57,25 @@ Enable the host.
 Start checking its health again.
 .It Cm load Ar filename
 Reload the configuration from the specified file.
-.It Cm log brief
-Disable verbose debug logging.
-.It Cm log verbose
-Enable verbose debug logging.
+.It Cm log level Cm warn | info | debug
+Set the log level.
+Changes made via
+.Cm log
+are not persisted and are lost on the next configuration reload.
+.It Cm log enable | disable Ar type
+Enable or disable a logging option, where
+.Ar type
+is one of
+.Cm state-changes ,
+.Cm host-checks ,
+.Cm connection ,
+or
+.Cm connection-errors .
+.It Cm log Cm verbose | brief
+Deprecated, equivalent to
+.Cm log level debug
+and
+.Cm log level info .
 .It Cm monitor
 Continuously report any changes in the host checking engine and the
 .Xr pf 4

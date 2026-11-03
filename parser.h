@@ -40,13 +40,19 @@ enum actions {
 	LOAD,
 	RELOAD,
 	MONITOR,
-	LOG_VERBOSE,
-	LOG_BRIEF
+	LOG_LV_WARN,
+	LOG_LV_INFO,
+	LOG_LV_DEBUG,
+	LOG_LV_VERBOSE,
+	LOG_LV_BRIEF,
+	LOG_OPT_ENABLE,
+	LOG_OPT_DISABLE,
 };
 
 struct parse_result {
 	struct ctl_id	 id;
 	enum actions	 action;
+	int		 log_opt;
 	char		*path;
 };
 
